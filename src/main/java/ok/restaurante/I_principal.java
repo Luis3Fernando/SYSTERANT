@@ -7,8 +7,10 @@ package ok.restaurante;
 
 /**
  *
- * @author Luis Fernando
+ * @author GRUPO 
  */
+
+//PELIGRO: NO TOCAR, SOLO DISEÑO
 public class I_principal extends javax.swing.JFrame {
 
     /**
@@ -27,20 +29,115 @@ public class I_principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Panel_Seleccionar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Panel_Imagen = new javax.swing.JPanel();
+        Panel_Informacion = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        Panel_Opciones = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 580));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Panel_Seleccionar.setBackground(new java.awt.Color(183, 84, 53));
+        Panel_Seleccionar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Concert One", 0, 55)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SELECCIONAR");
+        Panel_Seleccionar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -10, 320, 80));
+
+        getContentPane().add(Panel_Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, 350, 80));
+
+        Panel_Imagen.setBackground(new java.awt.Color(255, 204, 153));
+        Panel_Imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(Panel_Imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
+
+        Panel_Informacion.setBackground(new java.awt.Color(255, 250, 243));
+        Panel_Informacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(183, 84, 53));
+        jLabel2.setText("Precio:");
+        Panel_Informacion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 150, 50));
+
+        jLabel3.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(183, 84, 53));
+        jLabel3.setText("Descripción:");
+        Panel_Informacion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 200, 50));
+
+        jLabel4.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel4.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(186, 166, 165));
+        jLabel4.setText("N°");
+        Panel_Informacion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, 100, 30));
+
+        jLabel6.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(183, 84, 53));
+        jLabel6.setText("Cantidad:");
+        Panel_Informacion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 150, 50));
+
+        jLabel7.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel7.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(186, 166, 165));
+        jLabel7.setText("linea numero 5-------");
+        Panel_Informacion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 230, 30));
+
+        jLabel8.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel8.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(186, 166, 165));
+        jLabel8.setText("N°");
+        Panel_Informacion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 100, 30));
+
+        jLabel9.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel9.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(186, 166, 165));
+        jLabel9.setText("linea numero 1-------");
+        Panel_Informacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 230, 30));
+
+        jLabel10.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel10.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(186, 166, 165));
+        jLabel10.setText("linea numero 2-------");
+        Panel_Informacion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 230, 30));
+
+        jLabel11.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel11.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(186, 166, 165));
+        jLabel11.setText("linea numero 3-------");
+        Panel_Informacion.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 230, 30));
+
+        jLabel12.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel12.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(186, 166, 165));
+        jLabel12.setText("linea numero 4-------");
+        Panel_Informacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 230, 30));
+
+        getContentPane().add(Panel_Informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 340, 580));
+
+        Panel_Opciones.setBackground(new java.awt.Color(183, 84, 53));
+        Panel_Opciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(46, 21, 3));
+        jLabel5.setText("hola ");
+        Panel_Opciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 30, 60, 50));
+
+        getContentPane().add(Panel_Opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 1300, 110));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -79,5 +176,21 @@ public class I_principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel_Imagen;
+    private javax.swing.JPanel Panel_Informacion;
+    private javax.swing.JPanel Panel_Opciones;
+    private javax.swing.JPanel Panel_Seleccionar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
