@@ -1,5 +1,9 @@
 package ok.restaurante;
 
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -32,6 +36,10 @@ public class I_principal extends javax.swing.JFrame {
         Panel_Seleccionar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Panel_Imagen = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        busqueda = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
         Panel_Informacion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -44,7 +52,10 @@ public class I_principal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         Panel_Opciones = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 580));
@@ -62,6 +73,29 @@ public class I_principal extends javax.swing.JFrame {
 
         Panel_Imagen.setBackground(new java.awt.Color(255, 204, 153));
         Panel_Imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Izquierda.png")); // NOI18N
+        Panel_Imagen.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 75, 75));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Derecha.png")); // NOI18N
+        Panel_Imagen.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 75, 75));
+
+        busqueda.setBackground(new java.awt.Color(255, 250, 243));
+        busqueda.setFont(new java.awt.Font("Sriracha", 0, 18)); // NOI18N
+        busqueda.setForeground(new java.awt.Color(186, 166, 165));
+        busqueda.setText("Búsqueda");
+        busqueda.setBorder(null);
+        busqueda.setSelectionColor(new java.awt.Color(186, 166, 165));
+        busqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                busquedaMousePressed(evt);
+            }
+        });
+        Panel_Imagen.add(busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 190, 40));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Barra_Busqueda.png")); // NOI18N
+        Panel_Imagen.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 260, 40));
+
         getContentPane().add(Panel_Imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
 
         Panel_Informacion.setBackground(new java.awt.Color(255, 250, 243));
@@ -129,10 +163,49 @@ public class I_principal extends javax.swing.JFrame {
         Panel_Opciones.setBackground(new java.awt.Color(183, 84, 53));
         Panel_Opciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(46, 21, 3));
-        jLabel5.setText("hola ");
-        Panel_Opciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 30, 60, 50));
+        jToggleButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton4_normal.png")); // NOI18N
+        jToggleButton1.setBorder(null);
+        jToggleButton1.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton4_sombreado.png")); // NOI18N
+        jToggleButton1.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton4_presionado.png")); // NOI18N
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        Panel_Opciones.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 75, 75));
+
+        jToggleButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton1_normal.png")); // NOI18N
+        jToggleButton2.setBorder(null);
+        jToggleButton2.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton1_sombreado.png")); // NOI18N
+        jToggleButton2.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton1_presionado.png")); // NOI18N
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        Panel_Opciones.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 20, 75, 75));
+
+        jToggleButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton2_normal.png")); // NOI18N
+        jToggleButton3.setBorder(null);
+        jToggleButton3.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton2_sombreado.png")); // NOI18N
+        jToggleButton3.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton2_presionado.png")); // NOI18N
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        Panel_Opciones.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 75, 75));
+
+        jToggleButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton3_normal.png")); // NOI18N
+        jToggleButton4.setBorder(null);
+        jToggleButton4.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton3_sombreado.png")); // NOI18N
+        jToggleButton4.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton3_presionado.png")); // NOI18N
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+        Panel_Opciones.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 75, 75));
 
         getContentPane().add(Panel_Opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 1300, 110));
 
@@ -140,9 +213,25 @@ public class I_principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
+
+    private void busquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_busquedaMousePressed
+        busqueda.setText("");
+    }//GEN-LAST:event_busquedaMousePressed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -180,10 +269,13 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_Informacion;
     private javax.swing.JPanel Panel_Opciones;
     private javax.swing.JPanel Panel_Seleccionar;
+    private javax.swing.JTextField busqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -192,5 +284,9 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
     // End of variables declaration//GEN-END:variables
 }
