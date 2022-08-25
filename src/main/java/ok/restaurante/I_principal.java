@@ -52,6 +52,7 @@ public class I_principal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         Panel_Opciones = new javax.swing.JPanel();
         Boton_platos = new javax.swing.JToggleButton();
         Boton_informacion = new javax.swing.JToggleButton();
@@ -113,7 +114,7 @@ public class I_principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(183, 84, 53));
         jLabel3.setText("Descripción:");
-        Panel_Informacion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 200, 50));
+        Panel_Informacion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 200, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 204, 204));
         jLabel4.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
@@ -121,10 +122,10 @@ public class I_principal extends javax.swing.JFrame {
         jLabel4.setText("N°");
         Panel_Informacion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, 100, 30));
 
-        jLabel6.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Sriracha", 0, 35)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(183, 84, 53));
-        jLabel6.setText("Cantidad:");
-        Panel_Informacion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 150, 50));
+        jLabel6.setText("Nombre_del_Plato");
+        Panel_Informacion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 300, 50));
 
         jLabel7.setBackground(new java.awt.Color(255, 204, 204));
         jLabel7.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
@@ -136,13 +137,13 @@ public class I_principal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(186, 166, 165));
         jLabel8.setText("N°");
-        Panel_Informacion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 100, 30));
+        Panel_Informacion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 100, 30));
 
         jLabel9.setBackground(new java.awt.Color(255, 204, 204));
         jLabel9.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(186, 166, 165));
         jLabel9.setText("linea numero 1-------");
-        Panel_Informacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 230, 30));
+        Panel_Informacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 230, 30));
 
         jLabel10.setBackground(new java.awt.Color(255, 204, 204));
         jLabel10.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
@@ -161,6 +162,11 @@ public class I_principal extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(186, 166, 165));
         jLabel12.setText("linea numero 4-------");
         Panel_Informacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 230, 30));
+
+        jLabel15.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(183, 84, 53));
+        jLabel15.setText("Cantidad:");
+        Panel_Informacion.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 150, 50));
 
         getContentPane().add(Panel_Informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 340, 580));
 
@@ -292,6 +298,7 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

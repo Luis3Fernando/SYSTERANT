@@ -4,10 +4,6 @@
  */
 package ok.restaurante;
 
-/**
- *
- * @author Luis Fernando
- */
 public class Platos {
     
 }
