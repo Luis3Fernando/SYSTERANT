@@ -1,13 +1,11 @@
 package ok.restaurante;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+import static ok.restaurante.Base_Datos.platos;
 
 /**
  *
@@ -34,18 +32,17 @@ public class I_principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Panel_Seleccionar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         Panel_Imagen = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        busqueda = new javax.swing.JTextField();
+        Boton_Adelante = new javax.swing.JLabel();
+        Boton_Atras = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        busqueda = new javax.swing.JTextField();
+        Imagen_Fondo = new javax.swing.JLabel();
         Panel_Informacion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        Precio = new javax.swing.JLabel();
+        Nombre = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -53,6 +50,8 @@ public class I_principal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        Panel_Seleccionar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         Panel_Opciones = new javax.swing.JPanel();
         Boton_platos = new javax.swing.JToggleButton();
         Boton_informacion = new javax.swing.JToggleButton();
@@ -63,27 +62,29 @@ public class I_principal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Panel_Seleccionar.setBackground(new java.awt.Color(183, 84, 53));
-        Panel_Seleccionar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Concert One", 0, 55)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("SELECCIONAR");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Panel_Seleccionar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -10, 320, 80));
-
-        getContentPane().add(Panel_Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, 350, 80));
-
         Panel_Imagen.setBackground(new java.awt.Color(255, 204, 153));
         Panel_Imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Izquierda.png")); // NOI18N
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Panel_Imagen.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 75, 75));
+        Boton_Adelante.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Derecha.png")); // NOI18N
+        Boton_Adelante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Boton_Adelante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_AdelanteMouseClicked(evt);
+            }
+        });
+        Panel_Imagen.add(Boton_Adelante, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 75, 75));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Derecha.png")); // NOI18N
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Panel_Imagen.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 75, 75));
+        Boton_Atras.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Izquierda.png")); // NOI18N
+        Boton_Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Boton_Atras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_AtrasMouseClicked(evt);
+            }
+        });
+        Panel_Imagen.add(Boton_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 75, 75));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Barra_Busqueda.png")); // NOI18N
+        Panel_Imagen.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 260, 40));
 
         busqueda.setBackground(new java.awt.Color(255, 250, 243));
         busqueda.setFont(new java.awt.Font("Sriracha", 0, 18)); // NOI18N
@@ -98,8 +99,8 @@ public class I_principal extends javax.swing.JFrame {
         });
         Panel_Imagen.add(busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 190, 40));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Barra_Busqueda.png")); // NOI18N
-        Panel_Imagen.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 260, 40));
+        Imagen_Fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\Platos\\ceviche.jpg")); // NOI18N
+        Panel_Imagen.add(Imagen_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
 
         getContentPane().add(Panel_Imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
 
@@ -116,16 +117,17 @@ public class I_principal extends javax.swing.JFrame {
         jLabel3.setText("Descripción:");
         Panel_Informacion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 200, 50));
 
-        jLabel4.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel4.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(186, 166, 165));
-        jLabel4.setText("N°");
-        Panel_Informacion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, 100, 30));
+        Precio.setBackground(new java.awt.Color(255, 204, 204));
+        Precio.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        Precio.setForeground(new java.awt.Color(186, 166, 165));
+        Precio.setText("S/. 28");
+        Panel_Informacion.add(Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, 130, 30));
 
-        jLabel6.setFont(new java.awt.Font("Sriracha", 0, 35)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(183, 84, 53));
-        jLabel6.setText("Nombre_del_Plato");
-        Panel_Informacion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 300, 50));
+        Nombre.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        Nombre.setForeground(new java.awt.Color(183, 84, 53));
+        Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Nombre.setText("CEVICHE");
+        Panel_Informacion.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 340, 50));
 
         jLabel7.setBackground(new java.awt.Color(255, 204, 204));
         jLabel7.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
@@ -167,6 +169,17 @@ public class I_principal extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(183, 84, 53));
         jLabel15.setText("Cantidad:");
         Panel_Informacion.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 150, 50));
+
+        Panel_Seleccionar.setBackground(new java.awt.Color(183, 84, 53));
+        Panel_Seleccionar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Concert One", 0, 50)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SELECCIONAR");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Seleccionar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 290, 80));
+
+        Panel_Informacion.add(Panel_Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 80));
 
         getContentPane().add(Panel_Informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 340, 580));
 
@@ -250,6 +263,38 @@ public class I_principal extends javax.swing.JFrame {
     private void busquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_busquedaMousePressed
         busqueda.setText("");
     }//GEN-LAST:event_busquedaMousePressed
+
+    private void Boton_AdelanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_AdelanteMouseClicked
+        contador_imagenes++;
+        if(contador_imagenes>53){
+            contador_imagenes=0;
+            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+            Nombre.setText(arreglo.getNombre(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+            Nombre.setText(arreglo.getNombre(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+        }
+    }//GEN-LAST:event_Boton_AdelanteMouseClicked
+
+    private void Boton_AtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_AtrasMouseClicked
+        contador_imagenes--;
+              
+        if(contador_imagenes<0){
+            contador_imagenes=53;
+            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+            Nombre.setText(arreglo.getNombre(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+            Nombre.setText(arreglo.getNombre(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+        }
+        
+    }//GEN-LAST:event_Boton_AtrasMouseClicked
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -281,31 +326,57 @@ public class I_principal extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
+    
+    private int contador_imagenes = 0;
+    private Base_Datos arreglo = new Base_Datos();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Boton_Adelante;
+    private javax.swing.JLabel Boton_Atras;
     private javax.swing.JToggleButton Boton_bebidas;
     private javax.swing.JToggleButton Boton_informacion;
     private javax.swing.JToggleButton Boton_platos;
     private javax.swing.JToggleButton Boton_postres;
+    private javax.swing.JLabel Imagen_Fondo;
+    private javax.swing.JLabel Nombre;
     private javax.swing.JPanel Panel_Imagen;
     private javax.swing.JPanel Panel_Informacion;
     private javax.swing.JPanel Panel_Opciones;
     private javax.swing.JPanel Panel_Seleccionar;
+    private javax.swing.JLabel Precio;
     private javax.swing.JTextField busqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+}
+
+class Eventos implements KeyListener{
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //int cpd = e.getKeyCode();
+        //System.out.println(cpd);
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
 }
