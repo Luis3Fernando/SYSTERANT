@@ -19,7 +19,9 @@ public class I_principal extends javax.swing.JFrame {
      * Creates new form I_principal
      */
     public I_principal() {
+        
         initComponents();
+        
         
     }
 
@@ -33,10 +35,10 @@ public class I_principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Panel_Imagen = new javax.swing.JPanel();
+        flechitas = new javax.swing.JTextField();
         Boton_Adelante = new javax.swing.JLabel();
         Boton_Atras = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        busqueda = new javax.swing.JTextField();
         Imagen_Fondo = new javax.swing.JLabel();
         Panel_Informacion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,11 +61,21 @@ public class I_principal extends javax.swing.JFrame {
         Boton_postres = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Restaurante");
         setMinimumSize(new java.awt.Dimension(1000, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Imagen.setBackground(new java.awt.Color(255, 204, 153));
         Panel_Imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        flechitas.setBackground(new java.awt.Color(255, 255, 255));
+        flechitas.setText("espacio para botones");
+        flechitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flechitasActionPerformed(evt);
+            }
+        });
+        Panel_Imagen.add(flechitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 300, 50));
 
         Boton_Adelante.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Derecha.png")); // NOI18N
         Boton_Adelante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -72,7 +84,7 @@ public class I_principal extends javax.swing.JFrame {
                 Boton_AdelanteMouseClicked(evt);
             }
         });
-        Panel_Imagen.add(Boton_Adelante, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 75, 75));
+        Panel_Imagen.add(Boton_Adelante, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 75, 75));
 
         Boton_Atras.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Izquierda.png")); // NOI18N
         Boton_Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -81,26 +93,14 @@ public class I_principal extends javax.swing.JFrame {
                 Boton_AtrasMouseClicked(evt);
             }
         });
-        Panel_Imagen.add(Boton_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 75, 75));
+        Panel_Imagen.add(Boton_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 75, 75));
 
         jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Barra_Busqueda.png")); // NOI18N
-        Panel_Imagen.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 260, 40));
-
-        busqueda.setBackground(new java.awt.Color(255, 250, 243));
-        busqueda.setFont(new java.awt.Font("Sriracha", 0, 18)); // NOI18N
-        busqueda.setForeground(new java.awt.Color(186, 166, 165));
-        busqueda.setText("Búsqueda");
-        busqueda.setBorder(null);
-        busqueda.setSelectionColor(new java.awt.Color(186, 166, 165));
-        busqueda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                busquedaMousePressed(evt);
-            }
-        });
-        Panel_Imagen.add(busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 190, 40));
+        Panel_Imagen.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 260, 40));
 
         Imagen_Fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\Platos\\ceviche.jpg")); // NOI18N
         Panel_Imagen.add(Imagen_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
+        EventoTecla();
 
         getContentPane().add(Panel_Imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
 
@@ -260,10 +260,6 @@ public class I_principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Boton_postresActionPerformed
 
-    private void busquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_busquedaMousePressed
-        busqueda.setText("");
-    }//GEN-LAST:event_busquedaMousePressed
-
     private void Boton_AdelanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_AdelanteMouseClicked
         contador_imagenes++;
         if(contador_imagenes>53){
@@ -295,6 +291,10 @@ public class I_principal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_Boton_AtrasMouseClicked
+
+    private void flechitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flechitasActionPerformed
+       EventoTecla();
+    }//GEN-LAST:event_flechitasActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -327,6 +327,61 @@ public class I_principal extends javax.swing.JFrame {
         });
     }
     
+    //EVENTOS DE TECLADO
+    private void EventoTecla(){
+        KeyListener tecla = new KeyListener(){
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()){
+                    case 39:
+                        contador_imagenes++;
+                    if(contador_imagenes>53){
+                        contador_imagenes=0;
+                        Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+                        Nombre.setText(arreglo.getNombre(contador_imagenes));
+                        Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+                    }
+                    else{
+                        Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+                        Nombre.setText(arreglo.getNombre(contador_imagenes));
+                        Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+                        }
+                        break;
+                        
+                    case 37:
+                        contador_imagenes--;
+              
+                        if(contador_imagenes<0){
+                           contador_imagenes=53;
+                           Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+                           Nombre.setText(arreglo.getNombre(contador_imagenes));
+                           Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+                         }
+                        else{
+                            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
+                            Nombre.setText(arreglo.getNombre(contador_imagenes));
+                            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+                        }
+                        break;
+                        
+                    default:
+                        break;  
+                }
+                     
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+    };
+        
+        flechitas.addKeyListener(tecla);
+
+    }
+    
     
     
     private int contador_imagenes = 0;
@@ -345,7 +400,7 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_Opciones;
     private javax.swing.JPanel Panel_Seleccionar;
     private javax.swing.JLabel Precio;
-    private javax.swing.JTextField busqueda;
+    private javax.swing.JTextField flechitas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -358,25 +413,4 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
-}
-
-class Eventos implements KeyListener{
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        //int cpd = e.getKeyCode();
-        //System.out.println(cpd);
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }
