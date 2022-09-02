@@ -1,10 +1,12 @@
 package ok.restaurante;
 
+import java.awt.Frame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SpinnerNumberModel;
 import static ok.restaurante.Base_Datos.platos;
 
 /**
@@ -15,14 +17,14 @@ import static ok.restaurante.Base_Datos.platos;
 //PELIGRO: NO TOCAR, SOLO DISEÑO
 public class I_principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form I_principal
-     */
-    public I_principal() {
-        
-        initComponents();
-        
-        
+    int xMouse, yMouse;
+    public I_principal() {        
+        initComponents(); 
+        SpinnerNumberModel nm = new SpinnerNumberModel ( ) ;
+        nm.setMaximum(10);
+        nm.setMinimum(0);
+        nm.setStepSize(1);
+        jSpinner1.setModel(nm);
     }
 
     /**
@@ -35,6 +37,7 @@ public class I_principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Panel_Imagen = new javax.swing.JPanel();
+        barrita2 = new javax.swing.JLabel();
         flechitas = new javax.swing.JTextField();
         Boton_Adelante = new javax.swing.JLabel();
         Boton_Atras = new javax.swing.JLabel();
@@ -45,15 +48,13 @@ public class I_principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Precio = new javax.swing.JLabel();
         Nombre = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        Linea1 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         Panel_Seleccionar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        minimizar = new javax.swing.JLabel();
+        exit = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
         Panel_Opciones = new javax.swing.JPanel();
         Boton_platos = new javax.swing.JToggleButton();
         Boton_informacion = new javax.swing.JToggleButton();
@@ -63,19 +64,35 @@ public class I_principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante");
         setMinimumSize(new java.awt.Dimension(1000, 580));
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Imagen.setBackground(new java.awt.Color(255, 204, 153));
         Panel_Imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        flechitas.setBackground(new java.awt.Color(255, 255, 255));
-        flechitas.setText("espacio para botones");
+        barrita2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barrita2MouseDragged(evt);
+            }
+        });
+        barrita2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barrita2MousePressed(evt);
+            }
+        });
+        Panel_Imagen.add(barrita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 30));
+
+        flechitas.setBackground(new java.awt.Color(255, 250, 243));
+        flechitas.setFont(new java.awt.Font("Sriracha", 0, 14)); // NOI18N
+        flechitas.setForeground(new java.awt.Color(186, 166, 165));
+        flechitas.setBorder(null);
         flechitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 flechitasActionPerformed(evt);
             }
         });
-        Panel_Imagen.add(flechitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 300, 50));
+        Panel_Imagen.add(flechitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 190, 40));
 
         Boton_Adelante.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Derecha.png")); // NOI18N
         Boton_Adelante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -95,9 +112,11 @@ public class I_principal extends javax.swing.JFrame {
         });
         Panel_Imagen.add(Boton_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 75, 75));
 
+        jLabel14.setFont(new java.awt.Font("Sriracha", 0, 14)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Barra_Busqueda.png")); // NOI18N
         Panel_Imagen.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 260, 40));
 
+        Imagen_Fondo.setFont(new java.awt.Font("Sriracha", 0, 14)); // NOI18N
         Imagen_Fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\Platos\\ceviche.jpg")); // NOI18N
         Panel_Imagen.add(Imagen_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
         EventoTecla();
@@ -127,43 +146,14 @@ public class I_principal extends javax.swing.JFrame {
         Nombre.setForeground(new java.awt.Color(183, 84, 53));
         Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Nombre.setText("CEVICHE");
-        Panel_Informacion.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 340, 50));
+        Panel_Informacion.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 340, 50));
 
-        jLabel7.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel7.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(186, 166, 165));
-        jLabel7.setText("linea numero 5-------");
-        Panel_Informacion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 230, 30));
-
-        jLabel8.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel8.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(186, 166, 165));
-        jLabel8.setText("N°");
-        Panel_Informacion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 100, 30));
-
-        jLabel9.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel9.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(186, 166, 165));
-        jLabel9.setText("linea numero 1-------");
-        Panel_Informacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 230, 30));
-
-        jLabel10.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel10.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(186, 166, 165));
-        jLabel10.setText("linea numero 2-------");
-        Panel_Informacion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 230, 30));
-
-        jLabel11.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel11.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(186, 166, 165));
-        jLabel11.setText("linea numero 3-------");
-        Panel_Informacion.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 230, 30));
-
-        jLabel12.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel12.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(186, 166, 165));
-        jLabel12.setText("linea numero 4-------");
-        Panel_Informacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 230, 30));
+        Linea1.setBackground(new java.awt.Color(255, 204, 204));
+        Linea1.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        Linea1.setForeground(new java.awt.Color(186, 166, 165));
+        Linea1.setText("Plato típico del Perú");
+        Linea1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Panel_Informacion.add(Linea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 260, 180));
 
         jLabel15.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(183, 84, 53));
@@ -179,7 +169,33 @@ public class I_principal extends javax.swing.JFrame {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Panel_Seleccionar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 290, 80));
 
-        Panel_Informacion.add(Panel_Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 80));
+        Panel_Informacion.add(Panel_Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 300, 80));
+
+        minimizar.setFont(new java.awt.Font("Courier New", 1, 60)); // NOI18N
+        minimizar.setForeground(new java.awt.Color(183, 84, 53));
+        minimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        minimizar.setText("•");
+        minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizarMouseClicked(evt);
+            }
+        });
+        Panel_Informacion.add(minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 40, 30));
+
+        exit.setFont(new java.awt.Font("Courier New", 1, 60)); // NOI18N
+        exit.setForeground(new java.awt.Color(255, 0, 0));
+        exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exit.setText("•");
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitMouseClicked(evt);
+            }
+        });
+        Panel_Informacion.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 40, 30));
+
+        jSpinner1.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        jSpinner1.setBorder(null);
+        Panel_Informacion.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, 30));
 
         getContentPane().add(Panel_Informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 340, 580));
 
@@ -187,6 +203,7 @@ public class I_principal extends javax.swing.JFrame {
         Panel_Opciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Boton_platos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton4_normal.png")); // NOI18N
+        Boton_platos.setSelected(true);
         Boton_platos.setBorder(null);
         Boton_platos.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton4_sombreado.png")); // NOI18N
         Boton_platos.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton4_presionado.png")); // NOI18N
@@ -236,16 +253,34 @@ public class I_principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //BOTONES DE ABAJO
     private void Boton_platosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_platosActionPerformed
-          if(Boton_platos.isSelected()){
-              Boton_bebidas.isSelected();
-              Boton_postres.isSelected();
+        EventoTecla();
+        contador_imagenes=0;
+        if(Boton_platos.isSelected()){
+              bPlatos=true;
+              bPostres=false;
+              bBebidas=false;
+              Boton_bebidas.setSelected(false);
+              Boton_informacion.setSelected(false);
+              Boton_postres.setSelected(false);
+              
+              Imagen_Fondo.setIcon(arreglo.getImagenPlatos(0));
+        Nombre.setText(arreglo.getNombrePlatos(0));
+        Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPlatos(0)));
+        Linea1.setText(StrToHtml(arreglo.getDescripcionPlatos(0)));
+              
           }
-          else{
-              Boton_bebidas.setEnabled(true);
-              Boton_informacion.setEnabled(true);
-              Boton_postres.setEnabled(true);
+        else{
+              Boton_postres.setSelected(true);
+              
+              Imagen_Fondo.setIcon(arreglo.getImagenPostres(0));
+              Nombre.setText(arreglo.getNombrePostres(0));
+              Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPostres(0)));
+              Linea1.setText(StrToHtml(arreglo.getDescripcionPlatos(0)));
           }
+          
+        
     }//GEN-LAST:event_Boton_platosActionPerformed
 
     private void Boton_informacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_informacionActionPerformed
@@ -253,41 +288,94 @@ public class I_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_informacionActionPerformed
 
     private void Boton_bebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_bebidasActionPerformed
-        // TODO add your handling code here:
+        EventoTecla();
+        contador_imagenes=0;
+        if(Boton_bebidas.isSelected()){
+              bPlatos=false;
+              bPostres=false;
+              bBebidas=true;
+              Boton_postres.setSelected(false);
+              Boton_informacion.setSelected(false);
+              Boton_platos.setSelected(false);
+              
+              Imagen_Fondo.setIcon(arreglo.getImagenBebidas(0));
+        Nombre.setText(arreglo.getNombreBebidas(0));
+        Precio.setText("S/. "+String.valueOf(arreglo.getPrecioBebidas(0)));
+        Linea1.setText(StrToHtml(arreglo.getDescripcionBebidas(0)));
+              
+          }
+        else{
+              Boton_platos.setSelected(true);
+              Imagen_Fondo.setIcon(arreglo.getImagenPlatos(0));
+              Nombre.setText(arreglo.getNombrePlatos(0));
+              Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPlatos(0)));
+              Linea1.setText(StrToHtml(arreglo.getDescripcionBebidas(0)));
+
+          }
+        
+        
     }//GEN-LAST:event_Boton_bebidasActionPerformed
 
     private void Boton_postresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_postresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Boton_postresActionPerformed
-
-    private void Boton_AdelanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_AdelanteMouseClicked
-        contador_imagenes++;
-        if(contador_imagenes>53){
-            contador_imagenes=0;
-            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-            Nombre.setText(arreglo.getNombre(contador_imagenes));
-            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
-        }
-        else{
-            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-            Nombre.setText(arreglo.getNombre(contador_imagenes));
-            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
-        }
-    }//GEN-LAST:event_Boton_AdelanteMouseClicked
-
-    private void Boton_AtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_AtrasMouseClicked
-        contador_imagenes--;
+        EventoTecla();
+        contador_imagenes=0;
+        if(Boton_postres.isSelected()){
+              bPlatos=false;
+              bPostres=true;
+              bBebidas=false;
+              Boton_bebidas.setSelected(false);
+              Boton_informacion.setSelected(false);
+              Boton_platos.setSelected(false);
               
-        if(contador_imagenes<0){
-            contador_imagenes=53;
-            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-            Nombre.setText(arreglo.getNombre(contador_imagenes));
-            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+              Imagen_Fondo.setIcon(arreglo.getImagenPostres(0));
+        Nombre.setText(arreglo.getNombrePostres(0));
+        Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPostres(0)));
+        Linea1.setText(StrToHtml(arreglo.getDescripcionPostres(0)));
+              
+          }
+        else{
+              Boton_bebidas.setSelected(true);
+              Imagen_Fondo.setIcon(arreglo.getImagenBebidas(0));
+                Nombre.setText(arreglo.getNombreBebidas(0));
+                Precio.setText("S/. "+String.valueOf(arreglo.getPrecioBebidas(0)));
+                Linea1.setText(StrToHtml(arreglo.getDescripcionPostres(0)));
+          }
+        
+        
+    }//GEN-LAST:event_Boton_postresActionPerformed
+    
+    
+    //FLECHAS ATRAS Y ADELANTE
+    private void Boton_AdelanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_AdelanteMouseClicked
+        if(bPlatos){
+            Ventana_Platos_Ad();
         }
         else{
-            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-            Nombre.setText(arreglo.getNombre(contador_imagenes));
-            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+            if(bPostres){
+                Ventana_Postres_Ad();
+            }
+            else{
+                if(bBebidas){
+                    Ventana_Bebidas_Ad();
+                }
+            }
+        }
+                
+    }//GEN-LAST:event_Boton_AdelanteMouseClicked
+    
+    private void Boton_AtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_AtrasMouseClicked
+        if(bPlatos){
+            Ventana_Platos_At();
+        }
+        else{
+            if(bPostres){
+                Ventana_Postres_At();
+            }
+            else{
+                if(bBebidas){
+                    Ventana_Bebidas_At();
+                }
+            }
         }
         
     }//GEN-LAST:event_Boton_AtrasMouseClicked
@@ -295,6 +383,26 @@ public class I_principal extends javax.swing.JFrame {
     private void flechitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flechitasActionPerformed
        EventoTecla();
     }//GEN-LAST:event_flechitasActionPerformed
+    //PARA MOVER LA PARTE DE ARRIBA
+    private void barrita2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barrita2MousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_barrita2MousePressed
+
+    private void barrita2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barrita2MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barrita2MouseDragged
+    
+    //MINIMIZAR
+    private void minimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseClicked
+        this.setState(Frame.ICONIFIED);
+    }//GEN-LAST:event_minimizarMouseClicked
+
+    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_exitMouseClicked
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -338,35 +446,35 @@ public class I_principal extends javax.swing.JFrame {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()){
                     case 39:
-                        contador_imagenes++;
-                    if(contador_imagenes>53){
-                        contador_imagenes=0;
-                        Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-                        Nombre.setText(arreglo.getNombre(contador_imagenes));
-                        Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
-                    }
-                    else{
-                        Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-                        Nombre.setText(arreglo.getNombre(contador_imagenes));
-                        Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+                        if(bPlatos){
+                            Ventana_Platos_Ad();
                         }
+                        else{
+                            if(bPostres){
+                                Ventana_Postres_Ad();
+                            }
+                        else{
+                        if(bBebidas){
+                            Ventana_Bebidas_Ad();
+                        }
+            }
+        }
                         break;
                         
                     case 37:
-                        contador_imagenes--;
-              
-                        if(contador_imagenes<0){
-                           contador_imagenes=53;
-                           Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-                           Nombre.setText(arreglo.getNombre(contador_imagenes));
-                           Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
-                         }
-                        else{
-                            Imagen_Fondo.setIcon(arreglo.getImagen(contador_imagenes));
-                            Nombre.setText(arreglo.getNombre(contador_imagenes));
-                            Precio.setText("S/. "+String.valueOf(arreglo.getPrecio(contador_imagenes)));
+                        if(bPlatos){
+                            Ventana_Platos_At();
                         }
-                        break;
+                        else{
+                            if(bPostres){
+                                Ventana_Postres_At();
+                            }
+                            else{
+                                if(bBebidas){
+                                     Ventana_Bebidas_At();
+                }
+            }
+        }
                         
                     default:
                         break;  
@@ -382,10 +490,125 @@ public class I_principal extends javax.swing.JFrame {
 
     }
     
+    //PARA MOSTRAR VENTANAS
+    private void Ventana_Platos_Ad(){
+        contador_imagenes++;
+        if(contador_imagenes>53){
+            contador_imagenes=0;
+            Imagen_Fondo.setIcon(arreglo.getImagenPlatos(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePlatos(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPlatos(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPlatos(contador_imagenes)));
+
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagenPlatos(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePlatos(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPlatos(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPlatos(contador_imagenes)));
+        }
+    }
+
+    private void Ventana_Platos_At(){
+        contador_imagenes--;
+        if(contador_imagenes<0){
+            contador_imagenes=53;
+            Imagen_Fondo.setIcon(arreglo.getImagenPlatos(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePlatos(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPlatos(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPlatos(contador_imagenes)));
+
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagenPlatos(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePlatos(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPlatos(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPlatos(contador_imagenes)));
+        }
+    }
+    
+    private void Ventana_Postres_Ad(){
+        contador_imagenes++;
+        if(contador_imagenes>20){
+            contador_imagenes=0;
+            Imagen_Fondo.setIcon(arreglo.getImagenPostres(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePostres(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPostres(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPostres(contador_imagenes)));
+
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagenPostres(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePostres(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPostres(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPostres(contador_imagenes)));
+        }
+    }
+    
+    private void Ventana_Postres_At(){
+        contador_imagenes--;
+        if(contador_imagenes<0){
+            contador_imagenes=20;
+            Imagen_Fondo.setIcon(arreglo.getImagenPostres(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePostres(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPostres(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPostres(contador_imagenes)));
+
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagenPostres(contador_imagenes));
+            Nombre.setText(arreglo.getNombrePostres(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPostres(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionPostres(contador_imagenes)));
+        }
+    }
+    
+    private void Ventana_Bebidas_Ad(){
+        contador_imagenes++;
+        if(contador_imagenes>18){
+            contador_imagenes=0;
+            Imagen_Fondo.setIcon(arreglo.getImagenBebidas(contador_imagenes));
+            Nombre.setText(arreglo.getNombreBebidas(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioBebidas(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionBebidas(contador_imagenes)));
+
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagenBebidas(contador_imagenes));
+            Nombre.setText(arreglo.getNombreBebidas(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioBebidas(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionBebidas(contador_imagenes)));
+        }
+    }
+    
+    private void Ventana_Bebidas_At(){
+        contador_imagenes--;
+        if(contador_imagenes<0){
+            contador_imagenes=18;
+            Imagen_Fondo.setIcon(arreglo.getImagenBebidas(contador_imagenes));
+            Nombre.setText(arreglo.getNombreBebidas(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioBebidas(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionBebidas(contador_imagenes)));
+
+        }
+        else{
+            Imagen_Fondo.setIcon(arreglo.getImagenBebidas(contador_imagenes));
+            Nombre.setText(arreglo.getNombreBebidas(contador_imagenes));
+            Precio.setText("S/. "+String.valueOf(arreglo.getPrecioBebidas(contador_imagenes)));
+            Linea1.setText(StrToHtml(arreglo.getDescripcionBebidas(contador_imagenes)));
+        }
+    }
     
     
-    private int contador_imagenes = 0;
+    //para descripcion
+    public String StrToHtml(String Descripcion){
+        return "<html><p>"+ Descripcion +"</p></html>";
+    }
+    
+    
+    private static int contador_imagenes = 0;
     private Base_Datos arreglo = new Base_Datos();
+    private boolean bPlatos =true, bPostres=false, bBebidas=false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Boton_Adelante;
     private javax.swing.JLabel Boton_Atras;
@@ -394,23 +617,22 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton Boton_platos;
     private javax.swing.JToggleButton Boton_postres;
     private javax.swing.JLabel Imagen_Fondo;
+    private javax.swing.JLabel Linea1;
     private javax.swing.JLabel Nombre;
     private javax.swing.JPanel Panel_Imagen;
     private javax.swing.JPanel Panel_Informacion;
     private javax.swing.JPanel Panel_Opciones;
     private javax.swing.JPanel Panel_Seleccionar;
     private javax.swing.JLabel Precio;
+    private javax.swing.JLabel barrita2;
+    private javax.swing.JLabel exit;
     private javax.swing.JTextField flechitas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel minimizar;
     // End of variables declaration//GEN-END:variables
 }
