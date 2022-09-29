@@ -152,7 +152,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="210" width="270" height="210"/>
+              <AbsoluteConstraints x="40" y="230" width="270" height="180"/>
             </Constraint>
           </Constraints>
 
@@ -198,7 +198,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="Precio1">
+        <Component class="javax.swing.JLabel" name="Price">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -209,11 +209,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="a5" green="a6" red="ba" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="S/. 28"/>
+            <Property name="text" type="java.lang.String" value="S/. 0"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="140" y="500" width="130" height="30"/>
+              <AbsoluteConstraints x="110" y="500" width="210" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

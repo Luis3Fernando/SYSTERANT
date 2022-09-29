@@ -24,7 +24,7 @@ public class I_principal extends javax.swing.JFrame {
         nm.setMaximum(10);
         nm.setMinimum(0);
         nm.setStepSize(1);
-        jSpinner1.setModel(nm);
+        Cantidad.setModel(nm);
     }
 
     /**
@@ -37,6 +37,7 @@ public class I_principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Panel_Imagen = new javax.swing.JPanel();
+        buscar = new javax.swing.JLabel();
         barrita2 = new javax.swing.JLabel();
         flechitas = new javax.swing.JTextField();
         Boton_Adelante = new javax.swing.JLabel();
@@ -54,7 +55,7 @@ public class I_principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         minimizar = new javax.swing.JLabel();
         exit = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        Cantidad = new javax.swing.JSpinner();
         Panel_Opciones = new javax.swing.JPanel();
         Boton_platos = new javax.swing.JToggleButton();
         Boton_informacion = new javax.swing.JToggleButton();
@@ -70,6 +71,13 @@ public class I_principal extends javax.swing.JFrame {
 
         Panel_Imagen.setBackground(new java.awt.Color(255, 204, 153));
         Panel_Imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarMouseClicked(evt);
+            }
+        });
+        Panel_Imagen.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 40, 40));
 
         barrita2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -87,12 +95,17 @@ public class I_principal extends javax.swing.JFrame {
         flechitas.setFont(new java.awt.Font("Sriracha", 0, 14)); // NOI18N
         flechitas.setForeground(new java.awt.Color(186, 166, 165));
         flechitas.setBorder(null);
+        flechitas.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                flechitasCaretUpdate(evt);
+            }
+        });
         flechitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 flechitasActionPerformed(evt);
             }
         });
-        Panel_Imagen.add(flechitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 190, 40));
+        Panel_Imagen.add(flechitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 190, 40));
 
         Boton_Adelante.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Flecha_Derecha.png")); // NOI18N
         Boton_Adelante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,8 +162,9 @@ public class I_principal extends javax.swing.JFrame {
         Panel_Informacion.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 340, 50));
 
         Linea1.setBackground(new java.awt.Color(255, 204, 204));
-        Linea1.setFont(new java.awt.Font("Sriracha", 0, 24)); // NOI18N
+        Linea1.setFont(new java.awt.Font("Sriracha", 0, 18)); // NOI18N
         Linea1.setForeground(new java.awt.Color(186, 166, 165));
+        Linea1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Linea1.setText("Plato típico del Perú");
         Linea1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Panel_Informacion.add(Linea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 260, 180));
@@ -167,6 +181,11 @@ public class I_principal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SELECCIONAR");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         Panel_Seleccionar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 290, 80));
 
         Panel_Informacion.add(Panel_Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 300, 80));
@@ -193,9 +212,9 @@ public class I_principal extends javax.swing.JFrame {
         });
         Panel_Informacion.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 40, 30));
 
-        jSpinner1.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
-        jSpinner1.setBorder(null);
-        Panel_Informacion.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, 30));
+        Cantidad.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        Cantidad.setBorder(null);
+        Panel_Informacion.add(Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, 30));
 
         getContentPane().add(Panel_Informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 340, 580));
 
@@ -218,6 +237,14 @@ public class I_principal extends javax.swing.JFrame {
         Boton_informacion.setBorder(null);
         Boton_informacion.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton1_sombreado.png")); // NOI18N
         Boton_informacion.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\imagenes\\Boton1_presionado.png")); // NOI18N
+        Boton_informacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_informacionMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Boton_informacionMousePressed(evt);
+            }
+        });
         Boton_informacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton_informacionActionPerformed(evt);
@@ -403,6 +430,84 @@ public class I_principal extends javax.swing.JFrame {
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
         this.dispose();
     }//GEN-LAST:event_exitMouseClicked
+
+    private void Boton_informacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_informacionMousePressed
+        Boleta Ventana2 = new Boleta();
+        Ventana2.setVisible(true);
+        Ventana2.setLocationRelativeTo(null);
+	Ventana2.setResizable(false);
+        
+        
+    }//GEN-LAST:event_Boton_informacionMousePressed
+    
+    //SELECCIONAR PLATOS
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        
+        int cantidad = Integer.parseInt(Cantidad.getValue().toString());
+        Cantidad.setValue(0);
+        
+        if(cantidad ==0 || cont>=30){
+            
+            if(cantidad==0){
+                Advertencia1 m = new Advertencia1(this, true);
+                m.setVisible(true);
+                m.setLocationRelativeTo(null);
+                m.setResizable(false);
+            }
+            else
+            {
+               Advertencia n = new Advertencia(this, true);
+                n.setVisible(true);
+                n.setLocationRelativeTo(null);
+                n.setResizable(false); 
+            }
+            
+        }
+        
+        else{
+           if(bPlatos){
+            for(int i=0;i<cantidad;i++){
+               array.Añadir(arreglo.getObjetoPlatos(contador_imagenes)); 
+               cont++;
+            }
+            
+        }
+        else{
+            if(bPostres){
+                for(int i=0; i<cantidad;i++){
+                    array.Añadir(arreglo.getObjetoPostre(contador_imagenes));
+                    cont++;
+                }
+                
+            }
+            else{
+                if(bBebidas){
+                    for(int i=0; i<cantidad;i++){
+                        array.Añadir(arreglo.getObjetoBebida(contador_imagenes));
+                        cont++;
+                    }
+                    
+                }
+            }
+        } 
+        }
+            
+        
+              
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void flechitasCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_flechitasCaretUpdate
+        //String busqueda = flechitas.getText();
+    }//GEN-LAST:event_flechitasCaretUpdate
+
+    private void buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseClicked
+        Busqueda();
+    }//GEN-LAST:event_buscarMouseClicked
+
+    private void Boton_informacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_informacionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Boton_informacionMouseClicked
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -475,7 +580,8 @@ public class I_principal extends javax.swing.JFrame {
                 }
             }
         }
-                        
+                    
+                                            
                     default:
                         break;  
                 }
@@ -488,6 +594,83 @@ public class I_principal extends javax.swing.JFrame {
         
         flechitas.addKeyListener(tecla);
 
+    }
+    //PARA BUSCAR
+    public void Busqueda(){
+        String comida = flechitas.getText();
+        flechitas.setText("");
+        int ub=-1;
+        boolean bandera = false;
+        
+        for(int i=0; i<54;i++){
+           if(comida.equalsIgnoreCase(arreglo.getNombrePlatos(i))){
+                bandera=true;
+                ub=i;
+                Imagen_Fondo.setIcon(arreglo.getImagenPlatos(ub));
+                Nombre.setText(arreglo.getNombrePlatos(ub));
+                Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPlatos(ub)));
+                Linea1.setText(StrToHtml(arreglo.getDescripcionPlatos(ub)));
+                
+                bPlatos=true;
+                bPostres=false;
+                bBebidas=false;
+                Boton_bebidas.setSelected(false);
+                Boton_platos.setSelected(true);
+                Boton_postres.setSelected(false);
+                break;
+           }   
+        }
+        
+        if(bandera==false){
+            for(int i=0; i<21;i++){
+                if(comida.equalsIgnoreCase(arreglo.getNombrePostres(i))){
+                    bandera=true;
+                    ub=i;
+                    Imagen_Fondo.setIcon(arreglo.getImagenPostres(ub));
+                    Nombre.setText(arreglo.getNombrePostres(ub));
+                    Precio.setText("S/. "+String.valueOf(arreglo.getPrecioPostres(ub)));
+                    Linea1.setText(StrToHtml(arreglo.getDescripcionPostres(ub)));
+                    bPlatos=false;
+              bPostres=true;
+              bBebidas=false;
+              Boton_bebidas.setSelected(false);
+              Boton_postres.setSelected(true);
+              Boton_platos.setSelected(false);
+                    break;
+                    }         
+            }
+        }
+        
+         if(bandera==false){
+            for(int i=0; i<19;i++){
+                if(comida.equalsIgnoreCase(arreglo.getNombreBebidas(i))){
+                    bandera=true;
+                    ub=i;
+                    Imagen_Fondo.setIcon(arreglo.getImagenBebidas(ub));
+                    Nombre.setText(arreglo.getNombreBebidas(ub));
+                    Precio.setText("S/. "+String.valueOf(arreglo.getPrecioBebidas(ub)));
+                    Linea1.setText(StrToHtml(arreglo.getDescripcionBebidas(ub)));
+                    bPlatos=false;
+                    bPostres=false;
+                    bBebidas=true;
+                    Boton_postres.setSelected(false);
+                    Boton_bebidas.setSelected(true);
+                    Boton_platos.setSelected(false);
+                    break;
+           }              
+        }  
+         
+        }
+        if(bandera){
+            contador_imagenes=ub;   
+        }
+        else{
+            BusquedaNo ven = new BusquedaNo(this, true);
+            ven.setVisible(true);
+            ven.setLocationRelativeTo(null);
+            ven.setResizable(false);
+        }
+        
     }
     
     //PARA MOSTRAR VENTANAS
@@ -605,7 +788,20 @@ public class I_principal extends javax.swing.JFrame {
         return "<html><p>"+ Descripcion +"</p></html>";
     }
     
+    //PARA QUE INTERACTUE CON OTRA VENTANA
+    public static void Bandera_Desactivar(){
+        bandera_externa = false;
+    }
+    public void Desactivar_informacion(){
+        
+        Boton_informacion.setSelected(false);
+    }
     
+    //LOGICA MEGA PRO DEL PROGRAMA
+    private static Pedidos array = new Pedidos();
+    private static int cont =0; //para los pedidos
+    //
+    private static boolean bandera_externa = true;
     private static int contador_imagenes = 0;
     private Base_Datos arreglo = new Base_Datos();
     private boolean bPlatos =true, bPostres=false, bBebidas=false;
@@ -616,6 +812,7 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton Boton_informacion;
     private javax.swing.JToggleButton Boton_platos;
     private javax.swing.JToggleButton Boton_postres;
+    private javax.swing.JSpinner Cantidad;
     private javax.swing.JLabel Imagen_Fondo;
     private javax.swing.JLabel Linea1;
     private javax.swing.JLabel Nombre;
@@ -625,6 +822,7 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_Seleccionar;
     private javax.swing.JLabel Precio;
     private javax.swing.JLabel barrita2;
+    private javax.swing.JLabel buscar;
     private javax.swing.JLabel exit;
     private javax.swing.JTextField flechitas;
     private javax.swing.JLabel jLabel1;
@@ -632,7 +830,8 @@ public class I_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel minimizar;
     // End of variables declaration//GEN-END:variables
+
+    
 }

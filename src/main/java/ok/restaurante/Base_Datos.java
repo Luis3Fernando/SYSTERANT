@@ -7,24 +7,39 @@ public class Base_Datos {
     public static Platos platos[] = new Platos[54];
     public static Postres postres[] = new Postres[21];
     public static Bebidas bebidas[] = new Bebidas[19];
+    public static int p=0, po=0, b=0;
     
     
     protected void Generando_Campos_Platos(){
-        for(int i=0; i<54; i++){
+        if(p==0){
+            for(int i=0; i<54; i++){
             platos[i] = new Platos();
+            
+            }
+            p++;
         }
+        
+        
     }
     
      protected void Generando_Campos_Postres(){
-        for(int i=0; i<21; i++){
+        if(po==0){
+            for(int i=0; i<21; i++){
             postres[i] = new Postres();
+            }
+            po++;
         }
+         
     }
     
     protected void Generando_Campos_Bebidas(){
-        for(int i=0; i<19; i++){
+        if(b==0){
+           for(int i=0; i<19; i++){
             bebidas[i] = new Bebidas();
+            }
+           b++;
         }
+        
     } 
      
     public void Almacenando_Datos_Platos(){
@@ -535,6 +550,9 @@ public class Base_Datos {
         Almacenando_Datos_Platos();
         return platos[n].getImagen();
     }
+    public Comida getObjetoPlatos(int n){
+        return platos[n];
+    }
     
     //POSTRES
     public String getNombrePostres(int n){
@@ -553,6 +571,9 @@ public class Base_Datos {
     public ImageIcon getImagenPostres(int n){
         Almacenando_Datos_Postres();
         return postres[n].getImagen();
+    }
+    public Comida getObjetoPostre(int n){
+        return postres[n];
     }
     
     
@@ -573,6 +594,9 @@ public class Base_Datos {
     public ImageIcon getImagenBebidas(int n){
         Almacenando_Datos_Bebidas();
         return bebidas[n].getImagen();
+    }
+    public Comida getObjetoBebida(int n){
+        return bebidas[n];
     }
     
 }

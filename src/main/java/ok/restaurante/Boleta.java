@@ -5,6 +5,7 @@
 package ok.restaurante;
 
 import java.awt.Frame;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -15,8 +16,14 @@ public class Boleta extends javax.swing.JFrame {
     /**
      * Creates new form Boleta
      */
+    private DefaultListModel dlm;
+    
     public Boleta() {
+        dlm = new DefaultListModel();
+        Actualizar();
         initComponents();
+        Price.setText("S/. "+val);
+        jList1.setModel(dlm);
     }
 
     /**
@@ -37,7 +44,7 @@ public class Boleta extends javax.swing.JFrame {
         Precio = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        Precio1 = new javax.swing.JLabel();
+        Price = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         exit1 = new javax.swing.JLabel();
         exit = new javax.swing.JLabel();
@@ -95,13 +102,13 @@ public class Boleta extends javax.swing.JFrame {
         jList1.setSelectionForeground(new java.awt.Color(255, 250, 243));
         jScrollPane1.setViewportView(jList1);
 
-        Fondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 270, 210));
+        Fondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 270, 180));
 
-        Precio1.setBackground(new java.awt.Color(255, 204, 204));
-        Precio1.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
-        Precio1.setForeground(new java.awt.Color(186, 166, 165));
-        Precio1.setText("S/. 28");
-        Fondo.add(Precio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 130, 30));
+        Price.setBackground(new java.awt.Color(255, 204, 204));
+        Price.setFont(new java.awt.Font("Sriracha", 0, 30)); // NOI18N
+        Price.setForeground(new java.awt.Color(186, 166, 165));
+        Price.setText("S/. 0");
+        Fondo.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 210, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Fernando\\Documents\\Unamba\\Ciclo 4\\Desarrolllo de Software\\SYSTERANT\\RESTAURANTE\\src\\main\\java\\Para_Boleta\\esquina1.png")); // NOI18N
         Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, -30, -1, -1));
@@ -150,7 +157,8 @@ public class Boleta extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_barritaMousePressed
-
+   
+    
     private void barritaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barritaMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
@@ -163,8 +171,25 @@ public class Boleta extends javax.swing.JFrame {
 
     private void exit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit1MouseClicked
         this.dispose();
+        I_principal.Bandera_Desactivar();
     }//GEN-LAST:event_exit1MouseClicked
-
+    
+    //PARA ACTRUALIZAR LISTA
+    public void Actualizar(){
+        double precio=0;
+        for(int i=0; i<array.Numero_Elementos();i++)
+        {
+            dlm.addElement(array.getNombre(i));
+        }
+        
+        for(int i=0; i<array.Numero_Elementos();i++)
+        {
+            precio=precio+array.getPrecio(i);
+        }
+        
+        val = String.valueOf(precio);  
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -195,18 +220,19 @@ public class Boleta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+          
                 new Boleta().setVisible(true);
             }
         });
     }
 
-    
-    
+    private String val;
+    private static Pedidos array = new Pedidos();
     private int xMouse,yMouse;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Precio;
-    private javax.swing.JLabel Precio1;
+    private javax.swing.JLabel Price;
     private javax.swing.JPanel Solicitar;
     private javax.swing.JLabel barrita;
     private javax.swing.JLabel exit;
